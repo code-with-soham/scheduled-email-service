@@ -38,7 +38,34 @@ This is a full-stack email job scheduler application built for reliable scheduli
 
 ---
 
-## Running the Project
+## Daily Workflow: How to Run (After Setup)
+
+Once you have completed the initial setup, you will need **3 separate terminals (PowerShell/Command Prompt)** to run the project locally.
+
+**Terminal 1: Docker (Database, Redis, Elasticsearch)**
+```bash
+cd Scheduler_Backend
+docker-compose -f docker-compose.dev.yml up
+```
+*(Leave this terminal running in the background. It hosts your PostgreSQL database, Redis queue, and Elasticsearch containers.)*
+
+**Terminal 2: Backend API & BullMQ Worker**
+```bash
+cd Scheduler_Backend
+pnpm start
+```
+*(Leave this terminal running. The backend API will start on `http://localhost:4000` and the BullMQ worker will begin processing jobs.)*
+
+**Terminal 3: Frontend Vite Server**
+```bash
+cd Scheduler_Frontend
+pnpm run dev
+```
+*(Leave this terminal running. Open your browser and go to `http://localhost:5173` to access the ReachInbox UI.)*
+
+---
+
+## First-Time Setup Instructions
 
 ### Prerequisites
 - Node.js 20+
